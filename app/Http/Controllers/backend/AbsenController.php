@@ -3,14 +3,25 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\AbsensiModel;
+use App\Models\absensi;
 use Illuminate\Http\Request;
 
 class AbsenController extends Controller
 {
     public function index()
     {
-        return view('backend.absen.index');
+        $data = absensi::get();
+        return view('backend.absen.index', compact('data'));
+    }
+
+    public function show($id = null)
+    {
+        if ($id == null) {
+            return redirect()->route('backend.manage.absensi')->with('error', "The Id is Empty");
+        } else {
+            $data = absensi::find($id);
+            return view('backend.absen.show', compact('data'));
+        };
     }
 
     public function create()
@@ -20,7 +31,7 @@ class AbsenController extends Controller
 
     public function edit($id)
     {
-        $data = AbsensiModel::where('id', $id)->get();
+        $data = absensi::where('id', $id)->get();
         return view('backend.manage.edit.absen', compact('data'));
     }
 
@@ -32,13 +43,13 @@ class AbsenController extends Controller
         ]);
 
 
-        AbsensiModel::where('id', $id)->update(([
+        absensi::where('id', $id)->update(([
             'title'         => $request->nama,
             'nama_sholat'   => $request->nama_sholat
         ]));
 
         return redirect()
-            ->route('backend.absen.index')
+            ->route('backend.manage.absensi')
             ->with('success', 'Item Created Successfully');
     }
 
@@ -49,23 +60,23 @@ class AbsenController extends Controller
             'nama_sholat'   => 'required'
         ]);
 
-        AbsensiModel::create([
-            'title'         => $request->nama,
+        absensi::create([
+            'nama'         => $request->nama,
             'nama_sholat'   => $request->nama_sholat
         ]);
 
         return redirect()
-            ->route('backend.absen.index')
+            ->route('backend.manage.absensi')
             ->with('success', 'Item Created Successfully');
     }
 
     public function destroy($id)
     {
-        $data = AbsensiModel::find($id);
+        $data = absensi::find($id);
 
-
+        $data->delete();
         return redirect()
-            ->route('backend.absen.index')
+            ->route('backend.manage.absensi')
             ->with('success', 'Item Created Successfully');
     }
 }
