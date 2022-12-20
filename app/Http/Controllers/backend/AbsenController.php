@@ -29,4 +29,6 @@ class AbsenController extends Controller
             ->route('backend.absen.index')
             ->with('success', 'Item Created Successfully');
     }
+
+    
 }
