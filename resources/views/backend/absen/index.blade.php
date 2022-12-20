@@ -28,7 +28,8 @@
             <div class="card">
 
                 <div class="card-header">{{ __('Absensi') }}
-                 <a class="btn btn-primary" href="{{route('backend.create.absensi')}}" role="button">Create</a></div>
+                 <a class="btn btn-primary" href="{{route('backend.create.absensi')}}" role="button">Create</a>
+                </div>
 
                 <div class="card-body">
 
