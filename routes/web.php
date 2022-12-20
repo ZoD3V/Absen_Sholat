@@ -20,3 +20,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/backend/manage/absen', [AbsenController::class, 'index'])->name("backend.manage.absensi");
+Route::get('/backend/create/process/absen', [AbsenController::class, 'create_process'])->name("backend.manage.create.process.absensi");
+Route::get('/backend/edit/absen/{id?}', [AbsenController::class, 'edit'])->name("backend.manage.edit.absen");
+Route::post('/backend/edit/absen/{id?}', [AbsenController::class, 'edit_process'])->name("backend.manage.edit.process.absen");
+Route::get('/backend/process/show/absen/{id?}', [AbsenController::class, 'show'])->name("backend.manage.show.absen");
+Route::delete('/backend/process/delete/absen/{id?}', [AbsenController::class, 'destroy'])->name("backend.manage.delete.absen");
