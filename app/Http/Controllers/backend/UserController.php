@@ -39,7 +39,7 @@ class UserController extends Controller
             'email'  => $request->email,
             'password' => Hash::make($request->password)
         ]);
-        
+
         return redirect()->route('backend.manage.user')->with('success', "The Category <strong>{$request->name}</strong> created successfully");
     }
 
@@ -47,7 +47,7 @@ class UserController extends Controller
         if ($id == null){
             return redirect()->route('backend.manage.services.c')->with('error', "the ID is empty");
         } else{
-            $item = ServicesCategories::find($id);
+            $item = User::find($id);
             return view('backend.services.edit_c', compact('item'));
         }
     }
@@ -59,7 +59,7 @@ class UserController extends Controller
             'slug'  => 'required'
         ]);
 
-        ServicesCategories::where('id', $request->id)->update(([
+        User::where('id', $request->id)->update(([
             'name'  => $request->name,
             'slug'  => $request->slug
         ]));
@@ -68,7 +68,7 @@ class UserController extends Controller
     }
 
     public function destroy($id){
-        $item = ServicesCategories::find($id);
+        $item = User::find($id);
 
         $item->delete();
 

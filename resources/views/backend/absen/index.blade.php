@@ -1,1 +1,72 @@
 @extends('layouts.app')
+
+@section('title')
+    Absensi
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+@endsection
+
+@section('javascript')
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $('table').DataTable({
+                "pageLength" : 50
+            })
+        })
+    </script>
+@endsection
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+
+                <div class="card-header">{{ __('Absensi') }}
+                 <a class="btn btn-primary" href="{{route('backend.create.absensi')}}" role="button">Create</a></div>
+
+                <div class="card-body">
+
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Sholat</th>
+                            <th scope="col">Absen</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($data as $item)
+                          <tr>
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td>{{ $item->nama }}</td>
+                            <td>{{ $item->nama_sholat }}</td>
+                            <td><div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked>
+                                <label class="form-check-label" for="flexCheckCheckedDisabled">
+                                </label>
+                                </div>
+                            </td>
+
+                          </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
