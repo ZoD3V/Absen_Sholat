@@ -11,4 +11,7 @@ class AbsenController extends Controller
     {
         return view('backend.absen.index');
     }
+
+    public function 
+
 }
