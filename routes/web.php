@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // import backend contoller
 use App\Http\Controllers\Backend\UserController as BackendUserController;
 use App\Http\Controllers\Backend\AbsenController;
+use App\Http\Controllers\Backend\SholatController;
 
 // user
 Route::get('/backend/manage/user', [BackendUserController::class, 'index'])->name("backend.manage.user");
@@ -25,3 +26,6 @@ Route::get('/backend/edit/absen/{id?}', [AbsenController::class, 'edit'])->name(
 Route::post('/backend/edit/absen/{id?}', [AbsenController::class, 'edit_process'])->name("backend.manage.edit.process.absen");
 Route::get('/backend/process/show/absen/{id?}', [AbsenController::class, 'show'])->name("backend.manage.show.absen");
 Route::delete('/backend/process/delete/absen/{id?}', [AbsenController::class, 'destroy'])->name("backend.manage.delete.absen");
+
+
+Route::get('/backend/manage/sholat', [SholatController::class, 'index'])->name("backend.manage.sholat");

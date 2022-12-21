@@ -11,4 +11,11 @@ class siswa extends Model
     protected $fillable = [
         'nama',
     ];
+
+    protected $table = 'siswa';
+
+    public function daftarAbsen()
+    {
+        return $this->belongsTo(daftarAbsen::class);
+    }
 }

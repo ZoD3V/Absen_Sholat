@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Mapel | Edit ID {{ $mapel->id }}
+    Sholat | Edit ID {{ $data->id }}
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
@@ -28,9 +28,9 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">mapel | Edit #ID {{ $mapel->id }}</div>
+                    <div class="card-header">Data | Edit #ID {{ $data->id }}</div>
                     <div class="card-body">
-                        <form action="{{ route('backend.edit.process.mapel', $mapel->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('backend.edit.process.sholat', $data->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12  col-md-12 mb-3">
