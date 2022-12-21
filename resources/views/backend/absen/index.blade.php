@@ -44,22 +44,25 @@
                           <tr>
                             <th scope="col">No</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Sholat</th>
-                            <th scope="col">Absen</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                         @foreach ($data as $item)
                           <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->nama_sholat }}</td>
-                            <td><div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked>
-                                <label class="form-check-label" for="flexCheckCheckedDisabled">
-                                </label>
-                                </div>
-                            </td>
+                            <td>{{ $item->name }}</td>
+                            <td>
+                                        <a href="" class="btn btn-sm btn-primary"><i class="fas fa-search pe-1"></i> Show</a>
+                                        <a href="" class="btn btn-sm btn-success"><i class="fas fa-pencil-alt pe-1"></i> Edit</a>
+                                        <form method="post" class="d-inline" action="', $mapel->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash-alt pe-1"> Destroy</i>
+                                            </button>
+                                        </form>
+                                    </td>
 
                           </tr>
                         @endforeach

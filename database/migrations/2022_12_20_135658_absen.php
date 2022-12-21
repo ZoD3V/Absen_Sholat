@@ -13,11 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('absensi', function (Blueprint $table) {
+        Schema::create('absen', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('nama_sholat');
+            $table->unsignedBigInteger('sholat_id')->default(0);
+            $table->string('name');
+            $table->time('waktu_absen');
             $table->timestamps();
+
+            $table->foreign('sholat_id')
+                ->references('id')
+                ->on('sholat')
+                ->onDelete('cascade');
         });
     }
 

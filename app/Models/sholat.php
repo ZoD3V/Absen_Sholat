@@ -11,4 +11,6 @@ class sholat extends Model
     protected $fillable = [
         'nama',
     ];
+
+    protected $table = 'sholat';
 }

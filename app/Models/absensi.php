@@ -9,7 +9,14 @@ class absensi extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama',
-        'nama_sholat',
+        'sholat_id',
+        'name',
+        'waktu_absen'
     ];
+
+    protected $table = 'absen';
+
+    public function sholat(){
+        return $this->belongsTo(sholat::class);
+    }
 }
